@@ -51,6 +51,27 @@ const binarySearchCycle = (array, item) => {
   return null;
 };
 
-const index = binarySearchCycle(sortedArray, 7);
+const binarySearchPointers = (array, item) => {
+  let start = 0;
+  let end = array.length;
+
+  while (end - start) {
+    const middle = Math.ceil((end + start) / 2);
+
+    if (array[middle] === item) {
+      return middle;
+    }
+
+    if (array[middle] < item) {
+      start = middle;
+    } else {
+      end = middle;
+    }
+  }
+
+  return null;
+};
+
+const index = binarySearchPointers(sortedArray, 7);
 
 console.log(index, sortedArray[index]);
