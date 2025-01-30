@@ -5,6 +5,6 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": false,
-    "types": ["jsdom"]
+    "lib": ["DOM", "ES2020"]
   }
 }
