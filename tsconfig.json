@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "module": "system",
+    "module": "ES2022",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
