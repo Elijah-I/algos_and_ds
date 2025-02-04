@@ -5,7 +5,7 @@ interface User {
 }
 
 type MyOmit<Type, ExcludeKeys extends keyof Type> = {
-  [Key in keyof Type as Key extends ExcludeKeys ? never : Key]: Type[Key];
+  [Key in Exclude<keyof Type, ExcludeKeys>]: Type[Key];
 };
 
 const user: MyOmit<User, "email" | "id"> = {
