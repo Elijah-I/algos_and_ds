@@ -6,7 +6,7 @@
 
 const flights = [
   ["A", "B"],
-  ["A", "С"],
+  ["A", "C"],
   ["A", "D"],
   ["A", "O"],
   ["D", "K"],
@@ -22,51 +22,41 @@ const flights = [
 ];
 
 const findPath = (from, to) => {
-  let path = [];
-  const containsFrom = getStartsFrom(from);
+  let path = "";
+  let skip = 0;
+  let startFrom = from;
+  const queue = [];
 
-  function getStartsFrom(startFrom) {
-    const containsFrom = [];
+  for (let pointer = 0; pointer < flights.length; pointer++) {
+    let node = flights[pointer];
 
-    for (const key in flights) {
-      if (flights[key][0] === startFrom) {
-        containsFrom.push(flights[key]);
+    if (node[0] === startFrom) {
+      if (!path.endsWith(startFrom)) {
+        path += startFrom;
+      }
+      queue.push(node);
+      skip++;
+      continue;
+    }
+
+    if (queue.length) {
+      node = queue.pop();
+      startFrom = node[1];
+      pointer = skip;
+
+      if (node[0] === from) {
+        path = from;
+      }
+
+      if (node[1] === to) {
+        return (path + to).split("");
       }
     }
-
-    return containsFrom;
   }
 
-  if (!containsFrom.length) {
-    return [];
-  }
-
-  const queue = [containsFrom.pop()];
-
-  while (queue.length) {
-    const node = queue.pop();
-
-    if (node[1] === to) {
-      path.push(node[0], to);
-      return path;
-    }
-
-    const nextNodes = getStartsFrom(node[1]);
-
-    if (nextNodes.length) {
-      path.push(node[0]);
-      queue.push(...nextNodes);
-    }
-
-    if (!queue.length && containsFrom.length) {
-      path = [];
-      queue.push(containsFrom.pop());
-    }
-  }
-
-  return path;
+  return [];
 };
 
 console.log(findPath("A", "N")); // ['A', 'D', 'N']
-console.log(findPath("A", "Q")); // ["A", "D", "M", "Q"]
+console.log(findPath("A", "Q")); // [("A", "D", "M", "Q")];
 console.log(findPath("A", "W")); // []
