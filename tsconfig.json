@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "ES2022",
+    "target": "es2015",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
