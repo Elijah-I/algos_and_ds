@@ -7,7 +7,7 @@ const mergeSortedArray = (
   numbers1: number[],
   m: number,
   numbers2: number[],
-  n: number
+  n: number,
 ): number[] => {
   let pointer1 = 0;
   let pointer2 = 0;

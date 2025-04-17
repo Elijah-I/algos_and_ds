@@ -10,7 +10,7 @@ const cacheFn = <Result, Args>(fn: (...args: Args[]) => Result) => {
     }
 
     const end = performance.now();
-    const duration = Math.round((end - start) * 10000) / 10000 + "ms";
+    const duration = Math.round((end - start) * 10000) / 10000 + 'ms';
 
     return [cache.get(cacheKey), duration];
   };

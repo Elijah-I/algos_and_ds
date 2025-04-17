@@ -9,5 +9,5 @@ type MyPartial<Type> = {
 };
 
 const user: MyPartial<User> = {
-  name: "John"
+  name: 'John',
 };

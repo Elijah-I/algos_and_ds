@@ -1,7 +1,7 @@
-const s = "abcd";
+const s = 'abcd';
 
 const reverseString = (s: string) => {
-  let reversedString = "";
+  let reversedString = '';
 
   const stack = [];
   for (const char of s) {

@@ -91,10 +91,10 @@ const list = new LinkedList();
 list.add(0);
 list.add(1);
 list.add(3);
-console.log("BASE:", list.entry);
+console.log('BASE:', list.entry);
 
 list.insert(2, list.find(1));
-console.log("INSERTED:", list.entry);
+console.log('INSERTED:', list.entry);
 
 list.delete(2);
-console.log("DELETED:", list.entry);
+console.log('DELETED:', list.entry);

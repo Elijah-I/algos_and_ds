@@ -9,8 +9,7 @@ class TreeNode {
   }
 }
 
-const checkTree = (root: TreeNode | null): boolean =>
-  root.val === root.left.val + root.right.val;
+const checkTree = (root: TreeNode | null): boolean => root.val === root.left.val + root.right.val;
 
 const left = new TreeNode(4);
 const right = new TreeNode(6);

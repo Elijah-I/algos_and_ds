@@ -35,7 +35,7 @@ const searchMatrix = (matrix: number[][], target: number): boolean => {
     const current = Math.floor((start + end) / 2);
     const searchResult = binarySearch(matrix[current], target);
 
-    if (typeof searchResult == "boolean") {
+    if (typeof searchResult == 'boolean') {
       return searchResult;
     }
 

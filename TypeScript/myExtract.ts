@@ -1,7 +1,7 @@
-type A = "a" | "b" | "c";
+type A = 'a' | 'b' | 'c';
 
 type MyExtract<Type, ExtractTypes> = Type extends ExtractTypes ? Type : never;
 
-type B = MyExtract<A, "a" | "d">;
+type B = MyExtract<A, 'a' | 'd'>;
 
-const b: B = "a";
+const b: B = 'a';

@@ -1,4 +1,4 @@
-const s = "codeleet";
+const s = 'codeleet';
 const indices = [4, 5, 6, 7, 0, 2, 1, 3];
 
 const restoreString = (s: string, indices: number[]): string => {
@@ -8,7 +8,7 @@ const restoreString = (s: string, indices: number[]): string => {
     result[indices[order]] = char;
   });
 
-  return result.join("");
+  return result.join('');
 };
 
 const restoredString = restoreString(s, indices);

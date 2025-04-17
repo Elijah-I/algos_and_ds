@@ -1,10 +1,7 @@
 const numbers = [0, 1, 2, 2, 3, 0, 4, 2];
 const val = 2;
 
-const removeElement = (
-  numbers: number[] | string[],
-  val: number
-): number[] | string[] => {
+const removeElement = (numbers: number[] | string[], val: number): number[] | string[] => {
   const lastIndex = numbers.length - 1;
 
   for (let position = 0; position <= lastIndex; position++) {
@@ -14,7 +11,7 @@ const removeElement = (
         position--;
       }
       if (!Number.isNaN(numbers[lastIndex])) {
-        numbers[lastIndex] = "_";
+        numbers[lastIndex] = '_';
       }
     }
   }

@@ -53,4 +53,4 @@ while (mergedList) {
   mergedListNext = mergedList && mergedList.next;
 }
 
-console.log(res.join(" -> "));
+console.log(res.join(' -> '));

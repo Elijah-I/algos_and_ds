@@ -6,11 +6,7 @@ const differenceOfSum = (numbers: number[]): number => {
   for (const key in numbers) {
     if (numbers[key] > 9) {
       diff += Math.abs(
-        numbers[key] -
-          Array.from(String(numbers[key])).reduce(
-            (a, b) => Number(a) + Number(b),
-            0
-          )
+        numbers[key] - Array.from(String(numbers[key])).reduce((a, b) => Number(a) + Number(b), 0),
       );
     }
   }

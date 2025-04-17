@@ -103,7 +103,7 @@ tree.add(9);
 tree.add(11);
 tree.add(8);
 
-console.log("TREE:", JSON.stringify(tree.root, null, 4));
+console.log('TREE:', JSON.stringify(tree.root, null, 4));
 
-console.log("FIND 4:", tree.find(4));
-console.log("FIND 17:", tree.find(17));
+console.log('FIND 4:', tree.find(4));
+console.log('FIND 17:', tree.find(17));

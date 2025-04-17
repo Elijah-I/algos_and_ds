@@ -1,7 +1,7 @@
-type A = "a" | "b" | "c";
+type A = 'a' | 'b' | 'c';
 
 type MyExclude<Type, ExcludeTypes> = Type extends ExcludeTypes ? never : Type;
 
-type B = MyExclude<A, "a" | "d">;
+type B = MyExclude<A, 'a' | 'd'>;
 
-const b: B = "b";
+const b: B = 'b';

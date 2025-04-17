@@ -14,10 +14,7 @@ const findMin = (numbers: number[]): number => {
       return numbers[pivot + 1];
     }
 
-    if (
-      numbers[pivot - 1] === undefined ||
-      numbers[pivot - 1] > numbers[pivot]
-    ) {
+    if (numbers[pivot - 1] === undefined || numbers[pivot - 1] > numbers[pivot]) {
       return numbers[pivot];
     }
 

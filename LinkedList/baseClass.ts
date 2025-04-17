@@ -1,7 +1,10 @@
 type Value = string | number;
 
 class Node {
-  constructor(public value: Value, public next: Node | null = null) {}
+  constructor(
+    public value: Value,
+    public next: Node | null = null,
+  ) {}
 }
 
 class LinkedList {
@@ -46,12 +49,7 @@ class LinkedList {
     let pointer = this.head;
     let prevPointer = null;
 
-    while (pointer)
-      [pointer.next, prevPointer, pointer] = [
-        prevPointer,
-        pointer,
-        pointer.next
-      ];
+    while (pointer) [pointer.next, prevPointer, pointer] = [prevPointer, pointer, pointer.next];
 
     [this.head, this.tail] = [this.tail, this.head];
   }
@@ -94,7 +92,7 @@ class LinkedList {
 
   public deleteFirst() {
     if (!this.head) {
-      throw new Error("LinkedList is empty");
+      throw new Error('LinkedList is empty');
     }
 
     const prevHead = this.head;
@@ -106,7 +104,7 @@ class LinkedList {
 
   public deleteLast() {
     if (!this.head) {
-      throw new Error("LinkedList is empty");
+      throw new Error('LinkedList is empty');
     }
 
     const { prevPointer } = this.getByIndex(this.size - 1);
@@ -149,7 +147,7 @@ class LinkedList {
 
   public getKthFromTheEnd(k: number) {
     if (k < 0) {
-      throw new Error("invalid K");
+      throw new Error('invalid K');
     }
 
     if (k === 0) {

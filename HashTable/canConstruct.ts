@@ -1,5 +1,5 @@
-const ransomNote = "fihjjjjei";
-const magazine = "hjibagacbhadfaefdjaeaebgi";
+const ransomNote = 'fihjjjjei';
+const magazine = 'hjibagacbhadfaefdjaeaebgi';
 
 const canConstruct = (ransomNote: string, magazine: string): boolean => {
   const hashTable: Record<string, number> = {};

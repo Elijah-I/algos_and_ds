@@ -1,17 +1,14 @@
-const s = "A10:C2";
+const s = 'A10:C2';
 
 const cellsInRange = (s: string): string[] => {
-  const alphabet = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
   const extractColRow = (s: string) => {
-    return [
-      alphabet.indexOf(String(s.match(/[a-z]+/gi))),
-      Number(s.match(/[0-9]+/gi))
-    ];
+    return [alphabet.indexOf(String(s.match(/[a-z]+/gi))), Number(s.match(/[0-9]+/gi))];
   };
 
   const result: string[] = [];
-  const [from, to] = s.split(":");
+  const [from, to] = s.split(':');
   const [colFrom, rowFrom] = extractColRow(from);
   const [colTo, rowTo] = extractColRow(to);
 

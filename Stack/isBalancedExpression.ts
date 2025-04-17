@@ -1,10 +1,10 @@
-const expressionA = "{(([a] + <b>))[c]}";
-const expressionB = "(([a] + <b>)[c]";
+const expressionA = '{(([a] + <b>))[c]}';
+const expressionB = '(([a] + <b>)[c]';
 
 const isBalancedExpression = (expression: string): boolean => {
   const stack: string[] = [];
-  const openBrackets = ["(", "[", "<", "{"];
-  const closeBrackets = [")", "]", ">", "}"];
+  const openBrackets = ['(', '[', '<', '{'];
+  const closeBrackets = [')', ']', '>', '}'];
 
   for (const char of expression) {
     const openType = openBrackets.findIndex((bracket) => bracket === char);
@@ -16,9 +16,7 @@ const isBalancedExpression = (expression: string): boolean => {
     }
 
     if (closeType !== -1) {
-      const lastOpenType = openBrackets.findIndex(
-        (bracket) => bracket === stack[stack.length - 1]
-      );
+      const lastOpenType = openBrackets.findIndex((bracket) => bracket === stack[stack.length - 1]);
 
       if (lastOpenType !== closeType) {
         return false;

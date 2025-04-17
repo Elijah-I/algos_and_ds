@@ -1,11 +1,11 @@
 const graph = {};
-graph.a = ["b", "c"];
-graph.b = ["f"];
-graph.c = ["d", "e"];
-graph.d = ["f"];
-graph.e = ["f", "x"];
-graph.x = ["g"];
-graph.f = ["g"];
+graph.a = ['b', 'c'];
+graph.b = ['f'];
+graph.c = ['d', 'e'];
+graph.d = ['f'];
+graph.e = ['f', 'x'];
+graph.x = ['g'];
+graph.f = ['g'];
 
 const isBreadthSearch = (graph, start, end) => {
   const queue = [];
@@ -28,9 +28,9 @@ const isBreadthSearch = (graph, start, end) => {
   return false;
 };
 
-const breadthSearch = (graph, current, end, prefix = "", paths = [[]]) => {
+const breadthSearch = (graph, current, end, prefix = '', paths = [[]]) => {
   if (current === end) {
-    paths[paths.length - 1] = (prefix + current).split("");
+    paths[paths.length - 1] = (prefix + current).split('');
     paths.push([]);
 
     return;
@@ -47,6 +47,6 @@ const breadthSearch = (graph, current, end, prefix = "", paths = [[]]) => {
   return paths.slice(0, paths.length - 1);
 };
 
-const shortestPath = breadthSearch(graph, "a", "g");
+const shortestPath = breadthSearch(graph, 'a', 'g');
 
 console.log(shortestPath);

@@ -1,15 +1,15 @@
 const items = [
-  ["phone", "blue", "pixel"],
-  ["computer", "silver", "lenovo"],
-  ["phone", "gold", "iphone"]
+  ['phone', 'blue', 'pixel'],
+  ['computer', 'silver', 'lenovo'],
+  ['phone', 'gold', 'iphone'],
 ];
-const ruleKey = "color";
-const ruleValue = "silver";
+const ruleKey = 'color';
+const ruleValue = 'silver';
 
-const countMatches = <T extends "type" | "color" | "name">(
+const countMatches = <T extends 'type' | 'color' | 'name'>(
   items: string[][],
   ruleKey: T,
-  ruleValue: string
+  ruleValue: string,
 ): number => {
   const bindKey = { type: 0, color: 1, name: 2 };
 
