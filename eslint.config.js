@@ -14,7 +14,7 @@ export default [
       prettier: prettierPlugin,
     },
     rules: {
-      'no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
       'comma-dangle': ['error', 'always-multiline'],
       'object-curly-spacing': ['error', 'always'],
       'arrow-parens': ['error', 'always'],
