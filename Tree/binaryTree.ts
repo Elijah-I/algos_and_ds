@@ -145,22 +145,33 @@ class BinaryTree {
     console.log('-------- past-order --------');
     this.traverse(this.root, 'past-order');
   }
+
+  public nodeHeight(node?: Node): number {
+    const pointer = node || this.root;
+
+    if (node === null) return -1;
+
+    return 1 + Math.max(this.nodeHeight(pointer.leftNode), this.nodeHeight(pointer.rightNode));
+  }
 }
 
 const tree = new BinaryTree();
-tree.insert(7);
-tree.insert(4);
-tree.insert(1);
-tree.insert(6);
-tree.insert(9);
-tree.insert(8);
+tree.insert(20);
+tree.insert(30);
+tree.insert(24);
 tree.insert(10);
+tree.insert(6);
+tree.insert(11);
+tree.insert(3);
+tree.insert(8);
 tree.print();
 
-tree.preOrder();
+console.log(tree.nodeHeight());
 
-tree.inOrder();
+// tree.preOrder();
 
-tree.pastOrder();
+// tree.inOrder();
+
+// tree.pastOrder();
 
 export {};
