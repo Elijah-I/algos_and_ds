@@ -146,12 +146,24 @@ class BinaryTree {
     this.traverse(this.root, 'past-order');
   }
 
+  private isLeaf(node: Node) {
+    return !node.leftNode && !node.rightNode;
+  }
+
   public nodeHeight(node?: Node): number {
     const pointer = node || this.root;
 
-    if (node === null) return -1;
+    if (node === null || this.isLeaf(pointer)) return 0;
 
     return 1 + Math.max(this.nodeHeight(pointer.leftNode), this.nodeHeight(pointer.rightNode));
+  }
+
+  public findMin(node?: Node): number {
+    const pointer = node || this.root;
+
+    if (node === null || this.isLeaf(pointer)) return pointer.value;
+
+    return Math.min(pointer.value, this.findMin(pointer.leftNode), this.findMin(pointer.rightNode));
   }
 }
 
@@ -166,7 +178,9 @@ tree.insert(3);
 tree.insert(8);
 tree.print();
 
-console.log(tree.nodeHeight());
+console.log(tree.findMin());
+
+// console.log(tree.nodeHeight());
 
 // tree.preOrder();
 
