@@ -120,19 +120,47 @@ class BinaryTree {
   public print() {
     console.dir(this.root, { depth: null });
   }
+
+  private traverse(node: Node, order: 'pre-order' | 'in-order' | 'past-order') {
+    if (!node) return;
+
+    if (order === 'pre-order') console.log(node.value);
+    this.traverse(node.leftNode, order);
+    if (order === 'in-order') console.log(node.value);
+    this.traverse(node.rightNode, order);
+    if (order === 'past-order') console.log(node.value);
+  }
+
+  public preOrder() {
+    console.log('-------- pre-order --------');
+    this.traverse(this.root, 'pre-order');
+  }
+
+  public inOrder() {
+    console.log('-------- in-order --------');
+    this.traverse(this.root, 'in-order');
+  }
+
+  public pastOrder() {
+    console.log('-------- past-order --------');
+    this.traverse(this.root, 'past-order');
+  }
 }
 
 const tree = new BinaryTree();
 tree.insert(7);
-tree.insert(10);
-tree.insert(6);
 tree.insert(4);
-tree.insert(5);
-tree.insert(12);
-tree.insert(11);
-tree.delete(6);
+tree.insert(1);
+tree.insert(6);
+tree.insert(9);
+tree.insert(8);
+tree.insert(10);
 tree.print();
-// console.log(tree.find(11));
-// console.log(tree.find(3));
+
+tree.preOrder();
+
+tree.inOrder();
+
+tree.pastOrder();
 
 export {};
