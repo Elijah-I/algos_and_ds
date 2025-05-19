@@ -17,8 +17,8 @@ class BinaryTree {
     this._root = node;
   }
 
-  public insert(value: Node['value']) {
-    const newNode = new Node(value);
+  public insert(value: Node['value'], fakeValue?: Node['value']) {
+    const newNode = new Node(fakeValue || value);
 
     if (!this.root) {
       this.root = newNode;
@@ -197,18 +197,42 @@ class BinaryTree {
 
     return true;
   }
+
+  public isSearchTree(node?: Node, min?: number, max?: number): boolean {
+    if (node === undefined) node = this.root;
+
+    if (min && node.value <= min) {
+      return false;
+    }
+
+    if (max && node.value >= max) {
+      return false;
+    }
+
+    if (node.leftNode && !this.isSearchTree(node.leftNode, min, node.value)) {
+      return false;
+    }
+
+    if (node.rightNode && !this.isSearchTree(node.rightNode, node.value, max)) {
+      return false;
+    }
+
+    return true;
+  }
 }
 
 const tree = new BinaryTree();
 tree.insert(20);
 tree.insert(30);
-tree.insert(24);
+tree.insert(24, 4);
 tree.insert(10);
 tree.insert(6);
-tree.insert(11);
+tree.insert(11, 21);
 tree.insert(3);
 tree.insert(8);
 // tree.print();
+
+console.log(tree.isSearchTree());
 
 // console.log(tree.findMin());
 
@@ -220,22 +244,22 @@ tree.insert(8);
 
 // tree.pastOrder();
 
-const firstTree = new BinaryTree();
-firstTree.insert(20);
-firstTree.insert(30);
-firstTree.insert(40);
-firstTree.insert(10);
-firstTree.insert(5);
-firstTree.insert(1);
+// const firstTree = new BinaryTree();
+// firstTree.insert(20);
+// firstTree.insert(30);
+// firstTree.insert(40);
+// firstTree.insert(10);
+// firstTree.insert(5);
+// firstTree.insert(1);
 
-const secondTree = new BinaryTree();
-secondTree.insert(20);
-secondTree.insert(30);
-secondTree.insert(40);
-secondTree.insert(10);
-secondTree.insert(5);
-secondTree.insert(1);
+// const secondTree = new BinaryTree();
+// secondTree.insert(20);
+// secondTree.insert(30);
+// secondTree.insert(40);
+// secondTree.insert(10);
+// secondTree.insert(5);
+// secondTree.insert(1);
 
-console.log(firstTree.equals(secondTree));
+// console.log(firstTree.equals(secondTree));
 
 export {};
