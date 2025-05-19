@@ -7,7 +7,15 @@ class Node {
 }
 
 class BinaryTree {
-  private root: Node;
+  private _root: Node;
+
+  public get root() {
+    return this._root;
+  }
+
+  private set root(node: Node | null) {
+    this._root = node;
+  }
 
   public insert(value: Node['value']) {
     const newNode = new Node(value);
@@ -165,6 +173,30 @@ class BinaryTree {
 
     return Math.min(pointer.value, this.findMin(pointer.leftNode), this.findMin(pointer.rightNode));
   }
+
+  public equals(tree: BinaryTree) {
+    return this.checkNodeEquals(this.root, tree.root);
+  }
+
+  private checkNodeEquals(firstTree: Node, secondTree: Node) {
+    if (!firstTree && !secondTree) {
+      return true;
+    }
+
+    if (firstTree.value !== secondTree.value) {
+      return false;
+    }
+
+    if (!this.checkNodeEquals(firstTree.leftNode, secondTree.leftNode)) {
+      return false;
+    }
+
+    if (!this.checkNodeEquals(firstTree.rightNode, secondTree.rightNode)) {
+      return false;
+    }
+
+    return true;
+  }
 }
 
 const tree = new BinaryTree();
@@ -176,9 +208,9 @@ tree.insert(6);
 tree.insert(11);
 tree.insert(3);
 tree.insert(8);
-tree.print();
+// tree.print();
 
-console.log(tree.findMin());
+// console.log(tree.findMin());
 
 // console.log(tree.nodeHeight());
 
@@ -187,5 +219,23 @@ console.log(tree.findMin());
 // tree.inOrder();
 
 // tree.pastOrder();
+
+const firstTree = new BinaryTree();
+firstTree.insert(20);
+firstTree.insert(30);
+firstTree.insert(40);
+firstTree.insert(10);
+firstTree.insert(5);
+firstTree.insert(1);
+
+const secondTree = new BinaryTree();
+secondTree.insert(20);
+secondTree.insert(30);
+secondTree.insert(40);
+secondTree.insert(10);
+secondTree.insert(5);
+secondTree.insert(1);
+
+console.log(firstTree.equals(secondTree));
 
 export {};
