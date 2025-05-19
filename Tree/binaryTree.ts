@@ -219,20 +219,31 @@ class BinaryTree {
 
     return true;
   }
+
+  public printKNode(distance: number, went: number = 0, node: Node = this.root) {
+    if (distance === went) {
+      console.log(node.value);
+      return;
+    }
+
+    if (node.leftNode) this.printKNode(distance, went + 1, node.leftNode);
+    if (node.rightNode) this.printKNode(distance, went + 1, node.rightNode);
+  }
 }
 
 const tree = new BinaryTree();
 tree.insert(20);
 tree.insert(30);
-tree.insert(24, 4);
+tree.insert(24);
 tree.insert(10);
 tree.insert(6);
-tree.insert(11, 21);
+tree.insert(11);
 tree.insert(3);
 tree.insert(8);
 // tree.print();
+tree.printKNode(0);
 
-console.log(tree.isSearchTree());
+// console.log(tree.isSearchTree());
 
 // console.log(tree.findMin());
 
