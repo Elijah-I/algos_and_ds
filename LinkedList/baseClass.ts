@@ -7,7 +7,7 @@ class Node {
   ) {}
 }
 
-class LinkedList {
+export class LinkedList {
   private head: null | Node = null;
   private tail: null | Node = null;
   private size: number = 0;
@@ -201,7 +201,7 @@ list.addLast(20);
 list.addFirst(5);
 list.add(2, 15);
 list.add(4, 30);
-list.printAsArray();
+// list.printAsArray();
 
 // const kth = list.getKthFromTheEnd(3);
 // console.log(kth);
