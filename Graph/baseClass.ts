@@ -5,9 +5,10 @@ class Node {
 }
 
 class Graph {
+  size: number = 0;
   graph: LinkedList[] = [];
   indexedDB: Record<Node['label'], number> = {};
-  size: number = 0;
+  visited: Record<Node['label'], boolean> = {};
 
   private getNodeList(label: Node['label']) {
     return this.indexedDB[label] !== undefined ? this.graph[this.indexedDB[label]] : null;
@@ -69,6 +70,30 @@ class Graph {
     }
   }
 
+  public depthTraversal(from: Node['label']) {
+    this.visited = {};
+    return this.depthTraversalRecursive(from);
+  }
+
+  private depthTraversalRecursive(from: Node['label']): Node['label'][] {
+    if (this.visited[from]) return [];
+
+    this.visited[from] = true;
+    const result: string[] = [from];
+    const list = this.getNodeList(from);
+
+    if (list) {
+      let pointer = list.getRoot();
+
+      while (pointer) {
+        result.push(...this.depthTraversalRecursive(`${pointer.value}`));
+        pointer = list.getNextNode(pointer);
+      }
+    }
+
+    return result;
+  }
+
   public print() {
     this.graph.forEach((list, index) => {
       console.log(Object.keys(this.indexedDB)[index], 'is connected with', list.toArray());
@@ -80,15 +105,16 @@ const graph = new Graph();
 graph.addNode('A');
 graph.addNode('B');
 graph.addNode('C');
+graph.addNode('D');
 
 graph.addEdge('A', 'B');
 graph.addEdge('A', 'C');
-graph.removeEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('D', 'C');
 
-graph.addEdge('B', 'C');
+// graph.print();
 
-// graph.removeNode('B');
-
-graph.print();
+const path = graph.depthTraversal('A');
+console.log(path);
 
 export {};

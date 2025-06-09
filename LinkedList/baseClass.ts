@@ -41,6 +41,15 @@ export class LinkedList {
     onAdd();
   }
 
+  public getRoot() {
+    return this.head;
+  }
+
+  public getNextNode(node?: Node) {
+    if (!node) node = this.head;
+    return node.next;
+  }
+
   public reverse() {
     if (!this.head) {
       return;
