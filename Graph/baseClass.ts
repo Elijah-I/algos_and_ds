@@ -9,6 +9,8 @@ class Graph {
   graph: LinkedList[] = [];
   indexedDB: Record<Node['label'], number> = {};
   visited: Record<Node['label'], boolean> = {};
+  visiting: Record<Node['label'], boolean> = {};
+  parents: Record<Node['label'], Node['label'] | null> = {};
 
   private getNodeList(label: Node['label']) {
     return this.indexedDB[label] !== undefined ? this.graph[this.indexedDB[label]] : null;
@@ -119,6 +121,46 @@ class Graph {
     return stack;
   }
 
+  public hasCycle(from?: Node['label']): string {
+    let cycle = '';
+    if (this.visited[from]) return cycle;
+
+    if (!from) {
+      from = Object.keys(this.indexedDB)[0];
+      this.parents[from] = null;
+    }
+
+    this.visiting[from] = true;
+    const list = this.getNodeList(from);
+
+    if (list) {
+      let pointer = list.getRoot();
+
+      while (pointer) {
+        const to = pointer.value;
+
+        if (this.visiting[to]) {
+          let totalCycle = [to];
+          let current = from;
+          while (current) {
+            totalCycle.push(current);
+            current = this.parents[current];
+          }
+          return totalCycle.join('-');
+        }
+        this.parents[to] = from;
+        this.visiting[to] = true;
+        cycle = this.hasCycle(`${to}`);
+        pointer = list.getNextNode(pointer);
+      }
+
+      this.visiting[from] = false;
+      this.visited[from] = true;
+    }
+
+    return cycle;
+  }
+
   public print() {
     this.graph.forEach((list, index) => {
       console.log(Object.keys(this.indexedDB)[index], 'is connected with', list.toArray());
@@ -128,18 +170,31 @@ class Graph {
 
 const graph = new Graph();
 
-graph.addNode('X');
 graph.addNode('A');
 graph.addNode('B');
-graph.addNode('P');
+graph.addNode('C');
+graph.addNode('D');
 
-graph.addEdge('X', 'A');
-graph.addEdge('X', 'B');
-graph.addEdge('A', 'P');
-graph.addEdge('B', 'P');
+graph.addEdge('A', 'B');
+graph.addEdge('B', 'C');
+graph.addEdge('C', 'A');
+graph.addEdge('D', 'A');
 
-const sort = graph.topologicalSort('X');
-console.log(sort);
+const cycle = graph.hasCycle();
+console.log(cycle);
+
+// graph.addNode('X');
+// graph.addNode('A');
+// graph.addNode('B');
+// graph.addNode('P');
+
+// graph.addEdge('X', 'A');
+// graph.addEdge('X', 'B');
+// graph.addEdge('A', 'P');
+// graph.addEdge('B', 'P');
+
+// const sort = graph.topologicalSort('X');
+// console.log(sort);
 
 // graph.addNode('A');
 // graph.addNode('B');
@@ -151,9 +206,9 @@ console.log(sort);
 // graph.addEdge('B', 'D');
 // graph.addEdge('D', 'C');
 
-// graph.print();
-
 // const path = graph.depthTraversal('A');
 // console.log(path);
+
+// graph.print();
 
 export {};
