@@ -94,6 +94,31 @@ class Graph {
     return result;
   }
 
+  public topologicalSort(from: Node['label']): Node['label'][] {
+    if (this.visited[from]) return [];
+
+    const stack: Node['label'][] = [];
+    this.visited[from] = true;
+
+    const list = this.getNodeList(from);
+
+    if (list) {
+      let pointer = list.getRoot();
+
+      while (pointer) {
+        if (pointer) {
+          stack.unshift(...this.topologicalSort(`${pointer.value}`));
+        }
+
+        pointer = list.getNextNode(pointer);
+      }
+
+      stack.unshift(from);
+    }
+
+    return stack;
+  }
+
   public print() {
     this.graph.forEach((list, index) => {
       console.log(Object.keys(this.indexedDB)[index], 'is connected with', list.toArray());
@@ -102,19 +127,33 @@ class Graph {
 }
 
 const graph = new Graph();
+
+graph.addNode('X');
 graph.addNode('A');
 graph.addNode('B');
-graph.addNode('C');
-graph.addNode('D');
+graph.addNode('P');
 
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('B', 'D');
-graph.addEdge('D', 'C');
+graph.addEdge('X', 'A');
+graph.addEdge('X', 'B');
+graph.addEdge('A', 'P');
+graph.addEdge('B', 'P');
+
+const sort = graph.topologicalSort('X');
+console.log(sort);
+
+// graph.addNode('A');
+// graph.addNode('B');
+// graph.addNode('C');
+// graph.addNode('D');
+
+// graph.addEdge('A', 'B');
+// graph.addEdge('A', 'C');
+// graph.addEdge('B', 'D');
+// graph.addEdge('D', 'C');
 
 // graph.print();
 
-const path = graph.depthTraversal('A');
-console.log(path);
+// const path = graph.depthTraversal('A');
+// console.log(path);
 
 export {};
