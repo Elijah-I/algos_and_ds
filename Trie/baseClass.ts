@@ -120,15 +120,40 @@ class Trie {
     }
   }
 
-  public print(): void {
-    console.dir(this.root, { depth: null });
+  public autoComplete(search: Word): Word[] {
+    const words: Word[] = [];
+    const pointer = this.findLastNodeOf(search);
+
+    this._autoComplete(search, pointer, words);
+
+    return words;
   }
+
+  public findLastNodeOf(value: Value): Node {
+    let node = this.root;
+
+    Array.from(value).forEach((char) => {
+      node = node.getChild(char);
+    });
+
+    return node;
+  }
+
+  private _autoComplete(prefix: Word, pointer: Node, words: Word[]): void {
+    if (pointer.isEndOfWord) words.push(prefix);
+    pointer.children.forEach((child) => this._autoComplete(prefix + child.value, child, words));
+  }
+
+  public print(): void {}
 }
 
 const trie = new Trie();
 
 trie.insert('cat');
 trie.insert('canada');
+trie.insert('car');
+trie.insert('card');
+trie.insert('careful');
 
 // console.log(trie.contains('cat'));
 // console.log(trie.contains('can'));
@@ -136,6 +161,9 @@ trie.insert('canada');
 // console.log(trie.traversePreOrder());
 // console.log(trie.traversePostOrder());
 
-trie.deleteWord('canada');
+// trie.deleteWord('canada');
 
-trie.print();
+console.log(trie.autoComplete('ca'));
+console.log(trie.autoComplete('car'));
+
+// trie.print();
