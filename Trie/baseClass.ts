@@ -1,3 +1,4 @@
+type Word = string;
 type Value = string | null;
 
 class Node {
@@ -30,6 +31,11 @@ class Node {
     return Boolean(Object.keys(this._children).length);
   }
 
+  public deleteChild(value: Value): void {
+    const position = this.getPosition(value);
+    delete this._children[position];
+  }
+
   get value(): Value {
     return this._value;
   }
@@ -42,7 +48,7 @@ class Node {
 class Trie {
   root: Node = new Node();
 
-  public insert(word: Value): void {
+  public insert(word: Word): void {
     let pointer = this.root;
 
     Array.from(word).forEach((char) => {
@@ -56,7 +62,7 @@ class Trie {
     pointer.isEndOfWord = true;
   }
 
-  public contains(word: Value): boolean {
+  public contains(word: Word): boolean {
     let pointer = this.root;
 
     Array.from(word).forEach((char) => {
@@ -102,6 +108,18 @@ class Trie {
     return path;
   }
 
+  public deleteWord(word: Word, pointer = this.root) {
+    const [char, restWord] = [word.substring(0, 1), word.substring(1)];
+    const child = pointer.getChild(char);
+
+    if (!restWord) child.isEndOfWord = false;
+    else this.deleteWord(restWord, child);
+
+    if (!child.hasChildren() && !child.isEndOfWord) {
+      pointer.deleteChild(char);
+    }
+  }
+
   public print(): void {
     console.dir(this.root, { depth: null });
   }
@@ -115,7 +133,9 @@ trie.insert('canada');
 // console.log(trie.contains('cat'));
 // console.log(trie.contains('can'));
 
-console.log(trie.traversePreOrder());
-console.log(trie.traversePostOrder());
+// console.log(trie.traversePreOrder());
+// console.log(trie.traversePostOrder());
 
-// trie.print();
+trie.deleteWord('canada');
+
+trie.print();
