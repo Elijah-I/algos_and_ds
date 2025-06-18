@@ -167,3 +167,5 @@ console.log(trie.autoComplete('ca'));
 console.log(trie.autoComplete('car'));
 
 // trie.print();
+
+export {};
