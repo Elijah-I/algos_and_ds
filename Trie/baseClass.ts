@@ -28,21 +28,35 @@ class Node {
 class Trie {
   root: Node = new Node();
 
-  public insert(word: Node['value']) {
+  public insert(word: Node['value']): void {
     let pointer = this.root;
 
-    Array.from(word).forEach((value) => {
-      if (!pointer.hasChild(value)) {
-        pointer.addChild(value);
+    Array.from(word).forEach((char) => {
+      if (!pointer.hasChild(char)) {
+        pointer.addChild(char);
       }
 
-      pointer = pointer.getChild(value);
+      pointer = pointer.getChild(char);
     });
 
     pointer.isEndOfWord = true;
   }
 
-  public print() {
+  public contains(word: Node['value']): boolean {
+    let pointer = this.root;
+
+    Array.from(word).forEach((char) => {
+      if (!pointer.hasChild(char)) {
+        return false;
+      }
+
+      pointer = pointer.getChild(char);
+    });
+
+    return pointer.isEndOfWord;
+  }
+
+  public print(): void {
     console.dir(this.root, { depth: null });
   }
 }
@@ -50,5 +64,9 @@ class Trie {
 const trie = new Trie();
 
 trie.insert('cat');
-trie.insert('can');
-trie.print();
+trie.insert('canada');
+
+console.log(trie.contains('cat'));
+console.log(trie.contains('can'));
+
+// trie.print();
