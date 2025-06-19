@@ -21,40 +21,20 @@ const flights = [
   ['F', 'Y'],
 ];
 
-const findPath = (from, to) => {
-  let path = '';
-  let skip = 0;
-  let startFrom = from;
-  const queue = [];
+const findPath = (from: string, to: string): string[] => {
+  const path: string[] = [];
+  const pointsTo = flights.filter((flight) => flight[0] === from).map((flight) => flight[1]);
 
-  for (let pointer = 0; pointer < flights.length; pointer++) {
-    let node = flights[pointer];
-
-    if (node[0] === startFrom) {
-      if (!path.endsWith(startFrom)) {
-        path += startFrom;
-      }
-      queue.push(node);
-      skip++;
-      continue;
-    }
-
-    if (queue.length) {
-      node = queue.pop();
-      startFrom = node[1];
-      pointer = skip;
-
-      if (node[0] === from) {
-        path = from;
-      }
-
-      if (node[1] === to) {
-        return (path + to).split('');
-      }
-    }
+  if (pointsTo.includes(to)) {
+    return [from, to];
   }
 
-  return [];
+  pointsTo.forEach((nextPoint) => {
+    const nextNodes = findPath(nextPoint, to);
+    if (nextNodes.length) path.push(from, ...nextNodes);
+  });
+
+  return path;
 };
 
 console.log(findPath('A', 'N')); // ['A', 'D', 'N']
