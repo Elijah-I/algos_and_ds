@@ -1,3 +1,14 @@
+/**
+ * Название: Count Arithmetic Triplets
+ * Условие: Дан строго возрастающий массив целых чисел numbers и целое число diff.
+ *         Нужно найти количество таких троек индексов (i, j, k), что i < j < k и одновременно:
+ *         numbers[j] - numbers[i] == diff,
+ *         numbers[k] - numbers[j] == diff.
+ * Пример:
+ *   Ввод: numbers = [0, 1, 4, 6, 7, 10], diff = 3
+ *   Вывод: 2
+ */
+
 const numbers = [0, 1, 4, 6, 7, 10];
 const diff = 3;
 

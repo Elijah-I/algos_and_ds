@@ -1,3 +1,13 @@
+/**
+ * Название: Ransom Note
+ * Условие: Даны две строки: ransomNote и magazine.
+ *         Нужно определить, можно ли из символов строки magazine собрать строку ransomNote.
+ *         Каждый символ из magazine можно использовать только один раз.
+ * Пример:
+ *   Ввод: ransomNote = "fihjjjjei", magazine = "hjibagacbhadfaefdjaeaebgi"
+ *   Вывод: true
+ */
+
 const ransomNote = 'fihjjjjei';
 const magazine = 'hjibagacbhadfaefdjaeaebgi';
 

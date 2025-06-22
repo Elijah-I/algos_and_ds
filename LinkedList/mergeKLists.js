@@ -1,3 +1,14 @@
+/**
+ * Название: Merge k Sorted Lists
+ * Условие: Дан массив связных списков, каждый из которых представляет отсортированный по возрастанию список.
+ *         Нужно объединить все эти списки в один отсортированный связный список.
+ * Пример:
+ *   Ввод: [
+ *         new ListNode(1, new ListNode(4, new ListNode(5))),
+ *         new ListNode(0, new ListNode(2))
+ *       ]
+ *   Вывод: 0 -> 1 -> 2 -> 4 -> 5
+ */
 function ListNode(val, next) {
   this.val = val === undefined ? 0 : val;
   this.next = next === undefined ? null : next;

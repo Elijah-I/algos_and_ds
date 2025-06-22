@@ -1,3 +1,18 @@
+/**
+ * Название: Binary Search Tree with Core Operations
+ * Условие: Реализовать бинарное дерево поиска с поддержкой основных операций:
+ *         - вставка узла (insert)
+ *         - поиск узла (find)
+ *         - удаление узла (delete)
+ *         - обходы дерева (pre-order, in-order, post-order)
+ *         - высота узла (nodeHeight)
+ *         - проверка на бинарное дерево поиска (isSearchTree)
+ *         - вывод элементов на определённом уровне (printKNode)
+ * Пример:
+ *   Ввод: insert(20), insert(30), insert(24), insert(10), insert(6), insert(11), insert(3), insert(8)
+ *   Обход in-order: 3, 6, 8, 10, 11, 20, 24, 30
+ */
+
 class Node {
   constructor(
     public value: number | null,

@@ -1,3 +1,12 @@
+/**
+ * Название: Implement Queue Using Two Stacks
+ * Условие: Реализовать очередь на основе двух стеков.
+ *         Поддерживаются операции добавления (enqueue), извлечения (dequeue) и вывод содержимого.
+ * Пример:
+ *   Ввод: enqueue(10), enqueue(20), enqueue(30), dequeue()
+ *   Вывод после print(): [20, 30]
+ */
+
 class stackQueue {
   baseStack: number[] = [];
   reverseStack: number[] = [];

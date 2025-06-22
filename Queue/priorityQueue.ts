@@ -1,3 +1,12 @@
+/**
+ * Название: Priority Queue Implementation
+ * Условие: Реализовать очередь с приоритетом, где элементы вставляются в порядке возрастания значения,
+ *         так чтобы самая маленькая (наименее приоритетная) оставалась первой.
+ * Пример:
+ *   Ввод: insert(4), insert(1), insert(5), insert(7), insert(2)
+ *   Вывод после print(): [1, 2, 4, 5, 7]
+ */
+
 class priorityQueue {
   private size: number = 0;
   private queue: number[] = [];

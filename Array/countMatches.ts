@@ -1,3 +1,14 @@
+/**
+ * Название: Count Items Matching a Rule
+ * Условие: Дан список предметов, где каждый предмет представлен массивом из трёх элементов:
+ *         [тип, цвет, название]. Также дано правило (ruleKey) и его значение (ruleValue).
+ *         Нужно подсчитать количество предметов, которые соответствуют правилу.
+ * Пример:
+ *   Ввод: items = [["phone", "blue", "pixel"], ["computer", "silver", "lenovo"], ["phone", "gold", "iphone"]],
+ *         ruleKey = "color", ruleValue = "silver"
+ *   Вывод: 1
+ */
+
 const items = [
   ['phone', 'blue', 'pixel'],
   ['computer', 'silver', 'lenovo'],

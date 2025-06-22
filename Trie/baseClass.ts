@@ -1,3 +1,16 @@
+/**
+ * Название: Trie (Prefix Tree) Implementation
+ * Условие: Реализовать структуру данных Trie (префиксное дерево), поддерживающую:
+ *         - вставку слова (insert)
+ *         - проверку наличия слова (contains)
+ *         - автодополнение на основе заданного префикса (autoComplete)
+ *         - удаление слова (deleteWord)
+ * Пример:
+ *   Ввод: insert('cat'), insert('canada'), insert('car'), insert('card'), insert('careful')
+ *   Вызов: autoComplete('ca')
+ *   Вывод: ['cat', 'canada', 'car', 'card', 'careful']
+ */
+
 type Word = string;
 type Value = string | null;
 

@@ -1,3 +1,15 @@
+/**
+ * Название: Linked List Implementation
+ * Условие: Реализовать односвязный список с базовыми операциями:
+ *         - добавление элемента в конец (add)
+ *         - поиск узла по значению (find)
+ *         - вставка элемента после указанного узла (insert)
+ *         - удаление элемента по значению (delete)
+ * Пример:
+ *   Ввод: add(0), add(1), add(3), insert(2, after 1), delete(2)
+ *   Вывод после операций: { value: 0, next: { value: 1, next: { value: 3, next: null } } }
+ */
+
 type Value = number | null;
 type Next = Node | null;
 

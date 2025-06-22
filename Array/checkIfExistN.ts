@@ -1,3 +1,12 @@
+/**
+ * Название: Check If N Has Two Sum Equals to Target in Array
+ * Условие: Дан массив целых чисел arr. Нужно проверить, существует ли в массиве хотя бы одна пара элементов (i, j),
+ *         таких что arr[i] == 2 * arr[j] или arr[j] == 2 * arr[i], при условии i != j.
+ * Пример:
+ *   Ввод: arr = [10, 2, 5, 3]
+ *   Вывод: true (потому что 10 = 2 * 5)
+ */
+
 const arr = [10, 2, 5, 3];
 
 const checkIfExist = (arr: number[]): boolean => {

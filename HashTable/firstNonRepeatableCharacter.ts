@@ -1,3 +1,12 @@
+/**
+ * Название: First Non-Repeating Character
+ * Условие: Дано строка. Нужно найти и вернуть первый символ, который встречается в строке только один раз.
+ *         Если такого символа нет — вернуть undefined.
+ * Пример:
+ *   Ввод: "a green apple"
+ *   Вывод: "g"
+ */
+
 const str = 'a green apple';
 
 const firstNonRepeatableCharacter = (str: string) => {

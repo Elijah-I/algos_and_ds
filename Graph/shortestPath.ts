@@ -1,3 +1,20 @@
+/**
+ * Название: Dijkstra's Shortest Path Algorithm
+ * Условие: Реализовать алгоритм Дейкстры для поиска кратчайшего пути во взвешенном графе.
+ *         На вход подаётся начальная и конечная вершины. Нужно вернуть путь и длину кратчайшего пути.
+ * Пример:
+ *   Ввод: graph = {
+ *         a: [{ value: 'b', weight: 2 }, { value: 'd', weight: 8 }],
+ *         b: [{ value: 'd', weight: 5 }, { value: 'e', weight: 6 }],
+ *         d: [{ value: 'e', weight: 3 }, { value: 'f', weight: 2 }],
+ *         e: [{ value: 'f', weight: 1 }, { value: 'c', weight: 9 }],
+ *         f: [{ value: 'c', weight: 3 }],
+ *         c: []
+ *       }
+ *   Вызов: shortestPath('a', 'c')
+ *   Вывод: { path: "a -> b -> d -> f -> c", distance: 13 }
+ */
+
 type NodeValue = string;
 
 type Node = {

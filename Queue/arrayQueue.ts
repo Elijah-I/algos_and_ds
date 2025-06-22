@@ -1,3 +1,13 @@
+/**
+ * Название: Circular Queue Implementation Using Array
+ * Условие: Реализовать очередь на основе кольцевого массива с ограниченной вместимостью.
+ *         Поддерживаются операции добавления (enqueue), извлечения (dequeue), просмотра (peek),
+ *         проверки на пустоту и заполненность, а также вывод содержимого в консоль.
+ * Пример:
+ *   Ввод: enqueue(10), enqueue(20), enqueue(30), dequeue(), enqueue(40)
+ *   Вывод после print(): [40, 20, 30]
+ */
+
 type Item = number;
 
 abstract class AbstractArrayQueue {

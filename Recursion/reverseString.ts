@@ -1,3 +1,12 @@
+/**
+ * Название: Reverse String Using Recursion
+ * Условие: Дано строка. Нужно реализовать рекурсивную функцию, которая возвращает новую строку,
+ *         символы которой расположены в обратном порядке.
+ * Пример:
+ *   Ввод: "abcde"
+ *   Вывод: "edcba"
+ */
+
 const string = 'abcde';
 
 const reverseString = (string: string): string => {
