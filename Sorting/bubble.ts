@@ -17,11 +17,14 @@ const arr = [2, 7, 5, 6, 8, 3, 4, 1, 9];
  */
 const bubbleSort = (array: typeof arr) => {
   for (let step = 0; step < array.length; step++) {
+    let isSorted = true;
     for (let i = 0; i < array.length - step - 1; i++) {
       if (array[i] > array[i + 1]) {
         [array[i], array[i + 1]] = [array[i + 1], array[i]];
+        isSorted = false;
       }
     }
+    if (isSorted) return array;
   }
 
   return array;
